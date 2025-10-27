@@ -18,23 +18,22 @@ A full-stack Local LLM Text Generation Service built with FastAPI, LangChain, an
 
 1. **Configure API Key**  
 
- Add your OpenAI API key to `.streamlit/secrets.toml`:
-
- OPENAI_API_KEY = "YOUR_API_KEY"
+  Add your OpenAI API key to `.streamlit/secrets.toml`:
+  OPENAI_API_KEY = "YOUR_API_KEY"
    
 2. **Build Docker Image**  
-
-docker build -t local-llm-chatbot .
+ 
+ docker build -t local-llm-chatbot .
 
 3. **Run Docker Container**  
 
-docker run -p 8501:8501 -p 8000:8000 -p 8001:8001 local-llm-chatbot
+ docker run -p 8501:8501 -p 8000:8000 -p 8001:8001 local-llm-chatbot
 
 4. **Access the Chatbot**  
 
-Visit `http://localhost:8501` in your browser.  
-Select LangChain or LlamaIndex from the dropdown menu.  
-Start chatting!
+ Visit `http://localhost:8501` in your browser.  
+ Select LangChain or LlamaIndex from the dropdown menu.  
+ Start chatting!
 
 ---
 
