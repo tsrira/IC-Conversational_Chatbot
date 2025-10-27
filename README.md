@@ -39,12 +39,19 @@ A full-stack Local LLM Text Generation Service built with FastAPI, LangChain, an
 
 ## 📚 Project Structure
 
+
 ├── app.py # Streamlit UI with backend selection
+
 ├── lang_chat.py # LangChain FastAPI API (port 8000)
+
 ├── llamaindex_chat.py # LlamaIndex FastAPI API (port 8001)
+
 ├── requirements.txt # Python dependencies
+
 ├── Dockerfile # Single Dockerfile running all services with supervisord
+
 ├── supervisord.conf # Supervisor config managing multi-process
+
 └── README.md # This file
 
 
