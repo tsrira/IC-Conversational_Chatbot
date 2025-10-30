@@ -1,24 +1,42 @@
-# Base image
-FROM python:3.9-slim
+# Start with a lightweight Python 3.11 image
+FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies for supervisor
-RUN apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists/*
+# System dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    supervisor \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install python dependencies
+# Upgrade pip/setuptools/wheel
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+
+# Copy and install Python dependencies
 COPY requirements.txt .
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
-# Copy app sources
+# Safety: uninstall conflicting packages before installing your known-good set
+RUN pip uninstall -y langchain langchain-core langchain-community langgraph-prebuilt || true
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy your application source code
 COPY . .
 
-# Copy supervisor config file
+# Ensure Streamlit secrets file exists before build
+RUN mkdir -p /app/.streamlit
+COPY .streamlit/secrets.toml /app/.streamlit/secrets.toml
+
+# Copy Supervisor configuration
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Expose necessary ports
-EXPOSE 8501 8000 8001
+# Expose FastAPI + Streamlit + optional admin port
+EXPOSE 8000 8501 8001
 
-# Start supervisord to manage multiple processes
+# Start Supervisor, which manages both FastAPI (Uvicorn) and Streamlit
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

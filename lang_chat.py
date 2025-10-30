@@ -1,8 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from langchain_openai import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationChain
+from langchain_openai import ChatOpenAI  # or OpenAI
+
 from typing import Optional
 import os
 from dotenv import load_dotenv
