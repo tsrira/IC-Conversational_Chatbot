@@ -122,7 +122,7 @@ Below is the architecture representing:
 - Docker container orchestration
 - AWS EC2 deployment layer
 
-![Architecture Diagram](A_Flowchart_diagram_illustrates_a_two-part_local_L.png)
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/43340618-4347-42b6-b40b-aab926dd1a0b" />
 
 ---
 
