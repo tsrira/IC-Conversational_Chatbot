@@ -56,8 +56,8 @@ A full-stack Local LLM Text Generation Service built with FastAPI, LangChain, an
 
 
 ---
-## Working 
-Working link after deploying in AWS "Conversational Chatbot"(http://34.228.167.130:8501/)
+## Usage 
+💬 Working link after deploying in AWS [Conversational Chatbot](http://34.228.167.130:8501/)
 
 <img width="683" height="482" alt="image" src="https://github.com/user-attachments/assets/72998995-8d0d-40ba-ba5f-0be8970599a5" />
 With Langchain Model
@@ -65,8 +65,7 @@ With Langchain Model
 <img width="656" height="491" alt="image" src="https://github.com/user-attachments/assets/0f3081bc-c616-4b9c-bc7f-a545e3ff528a" />
 With LlamaIndex Model
 
-
-
+---
 
 ## 🛡️ Security
 
